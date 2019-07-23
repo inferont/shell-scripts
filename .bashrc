@@ -3,7 +3,7 @@ source ~/.bash_git
 function generate() {
     echo "export PHP_IDE_CONFIG='serverName="$HOSTNAME"'" >  ~/.bashrc_this_server
     echo "function prompt_left() {" >> ~/.bashrc_this_server
-    echo "   echo -e \"\\u@\\[\\033[1;"$(( ( RANDOM % 7 )  + 31 ))"m\\]\\h\\[\\033[0m\\]:\\w\$(__git_ps1)\"" >> ~/.bashrc_this_server
+    echo "   echo -e \"\\u@\\[\\033[1;"$(( ( RANDOM % 15 )  + 31 ))"m\\]\\h\\[\\033[0m\\]:\\w\$(__git_ps1)\"" >> ~/.bashrc_this_server
     echo "}" >> ~/.bashrc_this_server
 }
 function regenerate() {
