@@ -1,3 +1,4 @@
+wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc -O ~/.bashrc; wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.bash_git -O ~/.bash_git
 source ~/.bash_git
 if [ ! -f ~/.bashrc_this_server ]; then
     echo "export PHP_IDE_CONFIG='serverName="$HOSTNAME"'" >  ~/.bashrc_this_server
