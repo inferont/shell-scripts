@@ -3,6 +3,8 @@ if [ ! -f ~/.bash_git ]; then
 fi
 source ~/.bash_git
 mkdir -p ~/bin
+export PATH=~/bin:$PATH
+
 function generate() {
     echo "export PHP_IDE_CONFIG='serverName="$HOSTNAME"'" >  ~/.bashrc_this_server
     echo "function prompt_left() {" >> ~/.bashrc_this_server
@@ -22,12 +24,10 @@ alias ls="ls --color=auto"
 alias calculator="bc --quiet"
 alias calc="bc --quiet"
 alias bc="bc --quiet"
-export PATH=~/bin:$PATH
 
 unset HISTFILESIZE
 HISTSIZE=9999999
 HISTFILESIZE=99999999
-export PATH=~/bin:$PATH
 
 shopt -s histappend
 bind '"\e[A": history-search-backward'
