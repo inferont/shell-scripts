@@ -2,10 +2,11 @@ wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.ba
 wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.commonrc -O ~/.commonrc
 source ~/.commonrc
 if [ ! -f ~/bin/sshrc ]; then
-    wget --quiet https://raw.githubusercontent.com/Russell91/sshrc/master/sshrc -O ~/bin/sshrc
+    wget --quiet https://raw.githubusercontent.com/inferont/sshrc/master/sshrc -O ~/bin/sshrc
     chmod +x ~/bin/sshrc
     ln -s ~/.commonrc ~/.sshrc
 fi
+alias ssh="sshrc"
 mkdir -p ~/lib
 export LD_LIBRARY_PATH=~/lib
 
