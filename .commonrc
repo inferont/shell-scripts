@@ -49,7 +49,7 @@ function prompt_right() {
 function print_pre_prompt() {
     compensate=5
     if [ $(id -u) -eq 0 ]; then
-        PS1=$(printf "\n%*s\r%s\n\! ## " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
+        PS1=$(printf "\n%*s\r%s\n\! \e[1;31m# " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     else
         PS1=$(printf "\n%*s\r%s\n\! \$ " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     fi
