@@ -5,7 +5,7 @@ if [ ! -f ~/.commonrc ]; then
     wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.commonrc -O ~/.commonrc
 fi
 source ~/.bash_git
-mkdir ~/bin
+mkdir -p ~/bin
 export PATH=~/bin:$PATH
 
 function generate() {
