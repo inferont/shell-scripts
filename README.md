@@ -9,5 +9,9 @@ Install using:
 * Randomly chosen colors for each servers hostname in prompt (Switched using `regenerate`)
 * Unix timestamp of each prompt aligned to the right
 * Easily search history using up/down arrows as you type
-* Automatically updated on all servers installed on
+* Automatically updated on all servers during session start
 * Backups of shell history created automatically every month
+
+# Development/Customization
+* To customize this prompt for your own needs please fork this project and update the .bashrc and .commonrc URLs
+* A generic configuration section for multiple users may be introduced in the future
