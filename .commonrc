@@ -40,7 +40,7 @@ alias calculator="bc --quiet"
 alias calc="bc --quiet"
 alias bc="bc --quiet"
 
-PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME} ($(cat /proc/loadavg | cut -d' ' -f1-3))\007"'
+PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME} ($(cat /proc/loadavg | cut -d\' \' -f1-3))\007"'
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
 function prompt_right() {
   echo -e "\033[0;0m\\\D{%s}\033[0m"
