@@ -7,6 +7,7 @@ if [ ! -f ~/bin/sshrc ]; then
     ln -s ~/.commonrc ~/.sshrc
 fi
 alias ssh="sshrc"
+alias sssh="/usr/bin/ssh"
 mkdir -p ~/lib
 export LD_LIBRARY_PATH=~/lib
 
