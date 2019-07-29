@@ -15,7 +15,7 @@ BASH_HIST=~/.bash_history
 BACKUP=~/logs/bash_history/$(date +%y%m)
 mkdir -p ~/logs/bash_history
 
-HISTTIMEFORMAT="%F %I:%M%p "
+HISTTIMEFORMAT="%s "
 if [ -s "$BASH_HIST" -a "$BASH_HIST" -nt "$BACKUP" ]; then
   # history file is newer then backup
   if ! [[ -f $BACKUP ]]; then
