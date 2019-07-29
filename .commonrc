@@ -55,4 +55,5 @@ function print_pre_prompt() {
     fi
 }
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; print_pre_prompt"
+function unixdate() { date --date="@$@"; }
 export XDEBUG_CONFIG="idekey=PHPSTORM_CLI remote_enable=1 remote_host=172.16.24.83 remote_port=9000 remote_handler=dbgp remote_mode=req"
