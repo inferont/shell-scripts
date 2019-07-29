@@ -55,6 +55,15 @@ function print_pre_prompt() {
     fi
 }
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; print_pre_prompt"
-function unixdate() { date --date="@$@"; }
+function unixdate() {
+    if [ $# -eq 0 ]; then
+        date --date="@$(history | tail -n 1 | cut -d" " -f6)";
+    else
+        date --date="@$@";
+    fi
+}
 alias unixtime=unixdate
+function _() {
+    unixtime $(history | grep " $1 " | cut -d" " -f6)
+}
 export XDEBUG_CONFIG="idekey=PHPSTORM_CLI remote_enable=1 remote_host=172.16.24.83 remote_port=9000 remote_handler=dbgp remote_mode=req"
