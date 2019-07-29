@@ -37,8 +37,10 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 
 alias ls="ls --color=auto"
 alias calculator="bc --quiet"
-alias calc="bc --quiet"
 alias bc="bc --quiet"
+function calc() {
+    echo $@ | bc --quiet
+}
 
 PROMPT_COMMAND="echo -ne \"\033]0;${USER}@${HOSTNAME} ($(cat /proc/loadavg | cut -d' ' -f1-3))\007\""
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
