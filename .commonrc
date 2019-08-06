@@ -40,10 +40,10 @@ function calc() {
     echo $@ | bc --quiet
 }
 
-PROMPT_COMMAND="echo -ne \"\033]0;${USER}@${HOSTNAME} ($(cat /proc/loadavg | cut -d' ' -f1-3))\007\""
+unset PROMPT_COMMAND
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
 function prompt_right() {
-  echo -e "\033[0;0m\\\D{%s}\033[0m"
+   echo -e "\033[0;0m\\\D{%s}\033[0m"
 }
 function prompt_left() {
    echo -e "\u@$HOST_COLOR\h\[\033[0m\]:\w$(__git_ps1)"
@@ -51,10 +51,11 @@ function prompt_left() {
 
 function print_pre_prompt() {
     compensate=5
+    export WINDOW_TITLE="\033]0;${USER}@${HOSTNAME} ($(cat /proc/loadavg | cut -d' ' -f1-3))\a"
     if [ $(id -u) -eq 0 ]; then
-        PS1=$(printf "\n%*s\r%s\n\! # " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
+        PS1=$WINDOW_TITLE$(printf "\n%*s\r%s\n\! # " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     else
-        PS1=$(printf "\n%*s\r%s\n\! \$ " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
+        PS1=$WINDOW_TITLE$(printf "\n%*s\r%s\n\! \$ " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     fi
 }
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; print_pre_prompt"
