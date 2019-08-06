@@ -46,7 +46,11 @@ function prompt_right() {
    echo -e "\033[0;0m\\\D{%s}\033[0m"
 }
 function prompt_left() {
-   echo -e "\u@$HOST_COLOR\h\[\033[0m\]:\w$(__git_ps1)"
+   if [ $(id -u) -eq 0 ]; then
+      echo -e "\e[1;31m##\033[0m \u@$HOST_COLOR\h\[\033[0m\]:\w$(__git_ps1)"
+   else
+      echo -e "\u@$HOST_COLOR\h\[\033[0m\]:\w$(__git_ps1)"
+   fi
 }
 
 function print_pre_prompt() {
