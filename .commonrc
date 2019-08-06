@@ -10,9 +10,7 @@ export PATH=~/bin:$PATH
 
 function generate() {
     echo "export PHP_IDE_CONFIG='serverName="$HOSTNAME"'" >  ~/.bashrc_this_server
-    echo "function prompt_left() {" >> ~/.bashrc_this_server
-    echo "   echo -e \"\\u@\\[\\033[1;"$(( ( RANDOM % 15 )  + 31 ))"m\\]\\h\\[\\033[0m\\]:\\w\$(__git_ps1)\"" >> ~/.bashrc_this_server
-    echo "}" >> ~/.bashrc_this_server
+    echo "export HOST_COLOR=\"\\[\\033[1;"$(( ( RANDOM % 15 )  + 31 ))"m\\]\"" >> ~/.bashrc_this_server
 }
 function regenerate() {
     generate
@@ -47,11 +45,14 @@ PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
 function prompt_right() {
   echo -e "\033[0;0m\\\D{%s}\033[0m"
 }
+function prompt_left() {
+   echo -e "\u@$HOST_COLOR\h\[\033[0m\]:\w$(__git_ps1)"
+}
 
 function print_pre_prompt() {
     compensate=5
     if [ $(id -u) -eq 0 ]; then
-        PS1=$(printf "\n%*s\r%s\n\! \e[1;31m#\033[0m " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
+        PS1=$(printf "\n%*s\r%s\n\! # " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     else
         PS1=$(printf "\n%*s\r%s\n\! \$ " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     fi
