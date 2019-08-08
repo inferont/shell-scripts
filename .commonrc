@@ -59,12 +59,17 @@ APPLICATION_ENV="testing"
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
+## General aliases
 alias ls="ls --color=auto"
 alias calculator="bc --quiet"
 alias bc="bc --quiet"
 function calc() {
     echo $@ | bc --quiet
 }
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 
 unset PROMPT_COMMAND
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
