@@ -20,6 +20,9 @@ echo "Hostname: $HOSTNAME"
 echo "Memory used: $MEMORY1 / $MEMORY2"
 uptime
 
+## Use: "regenerate"
+## Allows you to change the random color assigned to the host in the prompt on initial login
+## The generate function will be called when you first log in
 function generate() {
     echo "export PHP_IDE_CONFIG='serverName="$HOSTNAME"'" >  ~/.bashrc_this_server
     echo "export HOST_COLOR=\"\\[\\033[1;"$(( ( RANDOM % 15 )  + 31 ))"m\\]\"" >> ~/.bashrc_this_server
@@ -32,6 +35,17 @@ if [ ! -f ~/.bashrc_this_server ]; then
     generate
 fi
 source ~/.bashrc_this_server
+
+## Use: "key {ssh filename suffix}"
+## Allows you to switch between ssh keys easily
+function key() {
+    if [ ! -f ~/.ssh/id_rsa_old ]; then
+       cp ~/.ssh/id_rsa ~/.ssh/id_rsa_old
+       cp ~/.ssh/id_rsa.pub ~/.ssh/id_rsa_old.pub
+    fi
+    cp ~/.ssh/id_rsa.$1 ~/.ssh/id_rsa
+    cp ~/.ssh/id_rsa.pub.$1 ~/.ssh/id_rsa.pub
+}
 
 unset HISTFILESIZE
 HISTSIZE=9999999
