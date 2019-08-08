@@ -8,6 +8,18 @@ source ~/.bash_git
 mkdir -p ~/bin
 export PATH=~/bin:$PATH
 
+## Welcome Message
+# Basic info
+HOSTNAME=`uname -n`
+
+# System load
+MEMORY1=`free -t -g | grep Total | awk '{print $3" GB";}'`
+MEMORY2=`free -t -g | grep "Mem" | awk '{print $2" GB";}'`
+
+echo "Hostname: $HOSTNAME"
+echo "Memory used: $MEMORY1 / $MEMORY2"
+uptime
+
 function generate() {
     echo "export PHP_IDE_CONFIG='serverName="$HOSTNAME"'" >  ~/.bashrc_this_server
     echo "export HOST_COLOR=\"\\[\\033[1;"$(( ( RANDOM % 15 )  + 31 ))"m\\]\"" >> ~/.bashrc_this_server
