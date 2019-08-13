@@ -47,6 +47,17 @@ function key() {
     cp ~/.ssh/id_rsa.pub.$1 ~/.ssh/id_rsa.pub
 }
 
+## Use: "authorize {user}@{servername}"
+## Allows easy installation of authorization keys on remote server
+function authorize() {
+    if [ ! -f ~/.ssh/id_rsa.pub ]; then
+       ssh-keygen
+    fi
+    cat ~/.ssh/id_rsa.pub | sssh $@ 'cat >> ~/.ssh/authorized_keys'
+}
+alias passwordless="authorize"
+
+## Use: Up/Down arrows for searching history with current input
 unset HISTFILESIZE
 HISTSIZE=9999999
 HISTFILESIZE=99999999
@@ -55,6 +66,7 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind '"\eOA": history-search-backward'
 bind '"\eOB": history-search-forward'
+
 APPLICATION_ENV="testing"
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
