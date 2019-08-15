@@ -73,6 +73,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 
 ## General aliases
 alias ls="ls --color=auto"
+alias ll="ls -l"
 alias calculator="bc --quiet"
 alias bc="bc --quiet"
 function calc() {
@@ -106,6 +107,9 @@ function print_pre_prompt() {
     fi
 }
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; print_pre_prompt"
+
+## Use: "unixdate {1565894972 - seconds since epoch}"
+## Allows easy conversion of unix time to human readable date/time
 function unixdate() {
     if [ $# -eq 0 ]; then
         date --date="@$(history | tail -n 1 | cut -d" " -f6)";
@@ -114,9 +118,14 @@ function unixdate() {
     fi
 }
 alias unixtime=unixdate
+## Use: "- {history item}"
+## Shows a human readable date/time for any history item
 function -() {
     unixtime $(history | grep " $1 " | cut -d" " -f6)
 }
+## Use: "_ {search history}"
+## Example: "_ ssh" returns all servers logged into
+## Allows to search history for any command and prompt to repeat it
 function _() {
     export HISTSEARCH="$@"
     cat ~/.bash_history ~/logs/bash_history/* | grep -v "^\#" | grep "^$HISTSEARCH" | sort -u | nl
