@@ -53,9 +53,10 @@ function authorize() {
     if [ ! -f ~/.ssh/id_rsa.pub ]; then
        ssh-keygen
     fi
-    cat ~/.ssh/id_rsa.pub | sssh $@ 'cat >> ~/.ssh/authorized_keys'
+    cat ~/.ssh/id_rsa.pub | /usr/bin/ssh $@ 'cat >> ~/.ssh/authorized_keys'
 }
 alias passwordless="authorize"
+alias keyless="authorize"
 
 ## Use: Up/Down arrows for searching history with current input
 unset HISTFILESIZE
