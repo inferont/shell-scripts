@@ -77,7 +77,6 @@ alias ls="ls --color=auto"
 alias ll="ls -l"
 alias calculator="bc --quiet"
 alias bc="bc --quiet"
-alias date="date +\"%-I:%M:%S %P%n%A, %B %d, %Y (%Z)\""
 function calc() {
     echo $@ | bc --quiet
 }
