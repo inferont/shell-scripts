@@ -74,7 +74,7 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 
 ## General aliases
 alias ls="ls --color=auto"
-alias ll="ls -lh"
+alias ll="ls -lhp --time-style=long-iso"
 alias calculator="bc --quiet"
 alias bc="bc --quiet"
 function calc() {
