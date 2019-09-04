@@ -109,6 +109,22 @@ function print_pre_prompt() {
 }
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; print_pre_prompt"
 
+## Use "gitc {Git branch name}"
+## Checks out master, pulls, checks out a branch, and pulls again
+function gitc() {
+    git checkout master
+    git pull
+    git checkout $1
+    git pull
+}
+
+## Use "gitcc {Git branch name}"
+## Checks out master, pulls, checks out a branch, pulls, and runs composer install
+function gitcc() {
+    gitcm $1
+    composer install
+}
+
 ## Use: "unixdate {1565894972 - seconds since epoch}"
 ## Allows easy conversion of unix time to human readable date/time
 function unixdate() {
