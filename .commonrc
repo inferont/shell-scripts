@@ -121,7 +121,7 @@ function gitc() {
 ## Use "gitcc {Git branch name}"
 ## Checks out master, pulls, checks out a branch, pulls, and runs composer install
 function gitcc() {
-    gitcm $1
+    gitc $1
     composer install
 }
 
