@@ -180,6 +180,7 @@ function -() {
 function _() {
     export HISTSEARCH="$@"
     cat ~/.bash_history ~/logs/bash_history/* | grep -v "^\#" | grep "^$HISTSEARCH" | sort -u | nl
+    echo "---------------------------------------------------------------------"
     echo "Make selection: "
     read selection
     eval $(cat ~/.bash_history ~/logs/bash_history/* | grep -v "^\#" | grep "^$HISTSEARCH" | sort -u | tail -n +$selection | head -n 1)
