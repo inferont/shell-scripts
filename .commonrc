@@ -76,8 +76,8 @@ export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
 ## General aliases
-alias ls="ls --color=auto"
-alias ll="ls -lhp --time-style=long-iso --group-directories-first"
+alias ls="ls --color=auto --group-directories-first -p"
+alias ll="ls -lh --time-style=long-iso"
 alias calculator="bc --quiet"
 alias bc="bc --quiet"
 function calc() {
