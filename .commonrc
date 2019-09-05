@@ -7,6 +7,9 @@ fi
 source ~/.bash_git
 mkdir -p ~/bin
 export PATH=~/bin:$PATH
+LAST_PWD=$(pwd)
+LAST_PWD_TIMES=0
+touch ~/logs/long_pwd_log
 
 ## Welcome Message
 # Basic info
@@ -101,6 +104,21 @@ function prompt_left() {
 function print_pre_prompt() {
     compensate=5
     export WINDOW_TITLE="\033]0;${USER}@${HOSTNAME} ($(cat /proc/loadavg | cut -d' ' -f1-3))\a"
+    
+    ## Keep track of last working directory. Write path to long_pwd_log if in directory for longer than 15 commands
+    if [ $(pwd) == $LAST_PWD ]; then
+      LAST_PWD_TIMES=$((LAST_PWD_TIMES+1))
+    else
+      LAST_PWD_TIMES=0
+    fi
+    if [ $LAST_PWD_TIMES -gt 15 ]; then
+      LAST_PWD_TIMES=0
+      TO_WRITE="${LAST_PWD/~/~}"
+      if ! grep -q $TO_WRITE ~/logs/long_pwd_log; then
+        echo $TO_WRITE >> ~/logs/long_pwd_log
+      fi
+    fi
+    LAST_PWD=$(pwd)
     if [ $(id -u) -eq 0 ]; then
         PS1=$WINDOW_TITLE$(printf "\n%*s\r%s\n\! # " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     else
@@ -124,6 +142,22 @@ function gitcc() {
     gitc $1
     composer install
 }
+
+## Use: "c" or "cd"
+## Lists common PWDs that have been used in long_pwd_log with an option to choose one
+function c() {
+   if [ -z $1 ]; then
+       cat ~/logs/long_pwd_log | sort -u | nl
+       echo "---------------------------------------------------------------------"
+       echo "Make selection:"
+       read selection
+       eval cd $(cat ~/logs/long_pwd_log | sort -u | tail -n +$selection | head -n 1)
+   else
+       cd $1
+   fi
+}
+alias cd=c
+
 
 ## Use: "unixdate {1565894972 - seconds since epoch}"
 ## Allows easy conversion of unix time to human readable date/time
