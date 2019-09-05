@@ -149,7 +149,7 @@ function gitbc() {
     git checkout master
     git pull
     echo "---------------------------------------------------------------------"
-    git for-each-ref --sort=committerdate refs/heads --format='%(refname:short)|%(authorname)|%(committerdate:relative)' | column -t -s '|' | nl
+    git for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(authorname)|%(committerdate:relative)' | head -n 20 | column -t -s '|' | nl
     echo "---------------------------------------------------------------------"
     echo "Make selection:"
     read selection
