@@ -163,6 +163,7 @@ function gitbcc() {
     gitbc $1
     composer install
 }
+alias bcc=gitbcc
 
 
 ## Use: "c" or "cd"
