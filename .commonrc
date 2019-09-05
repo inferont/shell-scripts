@@ -153,7 +153,7 @@ function gitbc() {
     echo "---------------------------------------------------------------------"
     echo "Make selection:"
     read selection
-    git checkout $(git for-each-ref --sort=committerdate refs/heads --format='%(refname:short)' | tail -n +$selection | head -n 1)
+    git checkout $(git for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)' | tail -n +$selection | head -n 1)
     git pull
 }
 
