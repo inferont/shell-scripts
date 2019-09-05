@@ -143,6 +143,28 @@ function gitcc() {
     composer install
 }
 
+## Use "gitbc"
+## Lists all current branches, prompts for selection, checks out selection
+function gitbc() {
+    git checkout master
+    git pull
+    echo "---------------------------------------------------------------------"
+    git for-each-ref --sort=committerdate refs/heads --format='%(refname:short)|%(authorname)|%(committerdate:relative)' | column -t -s '|' | nl
+    echo "---------------------------------------------------------------------"
+    echo "Make selection:"
+    read selection
+    git checkout $(git for-each-ref --sort=committerdate refs/heads --format='%(refname:short)' | tail -n +$selection | head -n 1)
+    git pull
+}
+
+## Use "gitbcc"
+## Lists all current branches, prompts for selection, checks out selection, run composer
+function gitbcc() {
+    gitbc $1
+    composer install
+}
+
+
 ## Use: "c" or "cd"
 ## Lists common PWDs that have been used in long_pwd_log with an option to choose one
 function c() {
