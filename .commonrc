@@ -6,6 +6,10 @@ if [ ! -f ~/.commonrc ]; then
 fi
 source ~/.bash_git
 mkdir -p ~/bin
+if [ ! -f ~/bin/branches ]; then
+    wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/branches -O ~/bin/branches
+    chmod a+x ~/bin/branches
+fi
 export PATH=~/bin:$PATH
 LAST_PWD=$(pwd)
 LAST_PWD_TIMES=0
@@ -149,11 +153,11 @@ function gitbc() {
     git checkout master
     git pull
     echo "---------------------------------------------------------------------"
-    git for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)|%(authorname)|%(committerdate:relative)' | head -n 20 | column -t -s '|' | nl
+    ~/bin/branches | head -n 20 | nl
     echo "---------------------------------------------------------------------"
     echo "Make selection:"
     read selection
-    git checkout $(git for-each-ref --sort=-committerdate refs/heads --format='%(refname:short)' | tail -n +$selection | head -n 1)
+    git checkout $(~/bin/branches | tail -n +$selection | head -n 1 | awk '{print $1}')
     git pull
 }
 
