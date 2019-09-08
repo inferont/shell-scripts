@@ -1,6 +1,6 @@
 #!/bin/bash
 for remote in `git branch -r|awk '{print $1}'`;do
-    info=`git show --pretty=format:"%ci %cn %cr " $remote|head -n 1`;
+    info=`git show --pretty=format:"%ci %ae %ci " $remote|head -n 1`;
     branch="${remote/origin\//}"
     echo $info$branch
-done|sort -r|awk '{ print $9 ":" $4 " " $5 ":" $6 " " $7 " " $8}'|column -s ':' -t -x
+done|sort -r|awk '{ print $8 "|" $4 "|" $5 " " $6 }'|column -s '|' -t -x
