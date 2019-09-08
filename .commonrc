@@ -10,6 +10,10 @@ if [ ! -f ~/bin/branches ]; then
     wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/branches -O ~/bin/branches
     chmod a+x ~/bin/branches
 fi
+if [ ! -f ~/.nanorc ]; then
+    find /usr/share/nano -name '*.nanorc' -printf "include %p\n" > ~/.nanorc
+fi
+alias nano=nano -q
 export PATH=~/bin:$PATH
 LAST_PWD=$(pwd)
 LAST_PWD_TIMES=0
