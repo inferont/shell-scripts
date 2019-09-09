@@ -6,6 +6,7 @@ if [ ! -f ~/.commonrc ]; then
 fi
 source ~/.bash_git
 mkdir -p ~/bin
+mkdir -p ~/logs
 if [ ! -f ~/bin/branches ]; then
     wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/branches -O ~/bin/branches
     chmod a+x ~/bin/branches
