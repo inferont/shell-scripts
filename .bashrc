@@ -1,5 +1,13 @@
-wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc -O ~/.bashrc
-wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.commonrc -O ~/.commonrc
+wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc -O ~/.bashrc_new
+wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.commonrc -O ~/.commonrc_new
+if [ $(stat --printf="%s" ~/.bashrc_new) -gt 200 ]; then
+    rm ~/.bashrc
+    mv ~/.bashrc_new ~/.bashrc
+fi
+if [ $(stat --printf="%s" ~/.commonrc_new) -gt 200 ]; then
+    rm ~/.commonrc
+    mv ~/.commonrc_new ~/.commonrc
+fi
 source ~/.commonrc
 if [ ! -f ~/bin/sshrc ]; then
     wget --quiet https://raw.githubusercontent.com/inferont/sshrc/master/sshrc -O ~/bin/sshrc
