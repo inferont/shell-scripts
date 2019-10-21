@@ -68,7 +68,7 @@ TERM xterm-debian
 # Background 256 color coding:
 # 48;5;COLOR_NUMBER
 
-NORMAL 00;38;5;248 # no color code at all
+NORMAL 00;38;5;247 # no color code at all
 #FILE 00 # regular file: use no color at all
 RESET 0 # reset to "normal" color
 DIR 00;38;5;4 # directory 01;34
