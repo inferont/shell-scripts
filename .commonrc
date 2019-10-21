@@ -4,9 +4,7 @@ fi
 if [ ! -f ~/.commonrc ]; then
     wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.commonrc -O ~/.commonrc
 fi
-if [ ! -f ~/.dircolors ]; then
-    wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.dircolors -O ~/.dircolors
-fi
+wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.dircolors -O ~/.dircolors
 eval $(dircolors -b ~/.dircolors)
 source ~/.bash_git
 mkdir -p ~/bin
