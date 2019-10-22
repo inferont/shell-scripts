@@ -179,6 +179,7 @@ EXEC 01;38;5;85
 
 # "unimportant" files as logs and backups (base01)
 .log    00;38;5;240
+.lock   00;38;5;240
 .bak    00;38;5;240
 .aux    00;38;5;240
 .bbl    00;38;5;240
