@@ -22,7 +22,6 @@ if [ ! -f ~/.config/nanorc/apacheconf.nanorc ]; then
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/apacheconf.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/Dockerfile.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/csv.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/etc-hosts.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/git.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/ini.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/javascript.nanorc
