@@ -138,7 +138,7 @@ EXEC 01;38;5;85
 # password/key formats
 .crt    01;38;5;10
 .key    01;38;5;10
-id_rsa* 01;38;5;10
+*id_rsa* 01;38;5;10
 
 # image formats (yellow)
 .jpg    00;38;5;136
