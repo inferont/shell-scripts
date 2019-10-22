@@ -135,6 +135,11 @@ EXEC 01;38;5;64
 .rz     01;38;5;1
 .apk    01;38;5;1
 
+# password/key formats
+.crt    01;38;5;10
+.key    01;38;5;10
+id_rsa* 01;38;5;10
+
 # image formats (yellow)
 .jpg    00;38;5;136
 .JPG    00;38;5;136 #stupid but needed
