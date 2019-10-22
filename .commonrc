@@ -48,7 +48,7 @@ if [ ! -f ~/.config/nanorc/apacheconf.nanorc ]; then
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/vi.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/xml.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/yaml.nanorc
-    find ~/.config/nanorc -name '*.nanorc' -printf "include %p\n" > ~/.nanorc
+    find /usr/share/nano ~/.config/nanorc -name '*.nanorc' -printf "include %p\n" > ~/.nanorc
     cd ~
 fi
 alias nano="nano -q"
