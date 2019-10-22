@@ -21,32 +21,17 @@ if [ ! -f ~/.config/nanorc/apacheconf.nanorc ]; then
     cd ~/.config/nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/apacheconf.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/Dockerfile.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/arduino.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/css.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/csv.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/etc-hosts.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/git.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/html.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/ini.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/inputrc.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/javascript.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/js.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/json.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/makefile.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/man.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/markdown.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/mutt.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/nginx.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/patch.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/puppet.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/readme.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/sed.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/sh.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/sql.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/svn.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/ts.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/vi.nanorc
-    wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/xml.nanorc
     wget --quiet https://raw.githubusercontent.com/scopatz/nanorc/master/yaml.nanorc
     find /usr/share/nano ~/.config/nanorc -name '*.nanorc' -printf "include %p\n" > ~/.nanorc
     cd ~
