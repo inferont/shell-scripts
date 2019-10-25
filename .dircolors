@@ -136,6 +136,8 @@ EXEC 01;38;5;85
 .apk    01;38;5;1
 
 # password/key formats
+.pem        01;38;5;10
+.csr        01;38;5;10
 .crt        01;38;5;10
 .key        01;38;5;10
 *id_rsa     01;38;5;10
@@ -428,6 +430,7 @@ EXEC 01;38;5;85
 *README               38;5;220;1
 *README.rst           38;5;220;1
 *README.md            38;5;220;1
+*README.MD            38;5;220;1
 *LICENSE              38;5;220;1
 *COPYING              38;5;220;1
 *INSTALL              38;5;220;1
@@ -446,6 +449,7 @@ EXEC 01;38;5;85
 .info                 38;5;184
 .markdown             38;5;184
 .md                   38;5;184
+.MD                   38;5;184
 .mkd                  38;5;184
 .nfo                  38;5;184
 .pod                  38;5;184
