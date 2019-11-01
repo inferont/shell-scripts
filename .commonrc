@@ -108,15 +108,21 @@ export GIT_PS1_SHOWUNTRACKEDFILES=true
 ## General aliases
 alias ls="ls --color=auto --group-directories-first -p"
 alias ll="ls -lh --time-style=long-iso"
+alias la="ll -a"
 alias calculator="bc --quiet"
 alias bc="bc --quiet"
 function calc() {
     echo $@ | bc --quiet
 }
+alias cd..="cd .."
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+alias .......="cd ../../../../../.."
+alias ........="cd ../../../../../../.."
+alias .........="cd ../../../../../../../.."
 
 unset PROMPT_COMMAND
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
