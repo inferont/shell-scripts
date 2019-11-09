@@ -37,7 +37,6 @@ if [ ! -f ~/.config/nanorc/apacheconf.nanorc ]; then
     find /usr/share/nano ~/.config/nanorc -name '*.nanorc' -printf "include %p\n" > ~/.nanorc
     cd ~
 fi
-alias nano="nano -q"
 export PATH=~/bin:$PATH
 LAST_PWD=$(pwd)
 LAST_PWD_TIMES=0
