@@ -1,5 +1,5 @@
-wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc -O ~/.bashrc_new
-wget --quiet https://raw.githubusercontent.com/inferont/shell-scripts/master/.commonrc -O ~/.commonrc_new
+wget --quiet -T 2 https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc -O ~/.bashrc_new
+wget --quiet -T 2 https://raw.githubusercontent.com/inferont/shell-scripts/master/.commonrc -O ~/.commonrc_new
 if [ $(stat --printf="%s" ~/.bashrc_new) -gt 200 ]; then
     rm ~/.bashrc
     mv ~/.bashrc_new ~/.bashrc
