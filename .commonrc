@@ -97,6 +97,7 @@ unset HISTFILESIZE
 HISTSIZE=9999999
 HISTFILESIZE=99999999
 shopt -s histappend
+set -o emacs
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind '"\eOA": history-search-backward'
