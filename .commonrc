@@ -39,6 +39,7 @@ if [ ! -f ~/.config/nanorc/apacheconf.nanorc ]; then
 fi
 export PATH=~/bin:$PATH
 LAST_PWD=$(pwd)
+LAST_PWD=$(printf %q "$LAST_PWD")
 LAST_PWD_TIMES=0
 touch ~/logs/long_pwd_log
 
@@ -142,9 +143,11 @@ function prompt_left() {
 function print_pre_prompt() {
     compensate=5
     export WINDOW_TITLE="\033]0;${USER}@${HOSTNAME} ($(cat /proc/loadavg | cut -d' ' -f1-3))\a"
+    CURRENT_PWD=$(pwd)
+    CURRENT_PWD=$(printf %q "$CURRENT_PWD")
     
     ## Keep track of last working directory. Write path to long_pwd_log if in directory for longer than 15 commands
-    if [ $(pwd) == $LAST_PWD ]; then
+    if [[ "$CURRENT_PWD" == "$LAST_PWD" ]]; then
       LAST_PWD_TIMES=$((LAST_PWD_TIMES+1))
     else
       LAST_PWD_TIMES=0
@@ -157,6 +160,7 @@ function print_pre_prompt() {
       fi
     fi
     LAST_PWD=$(pwd)
+    LAST_PWD=$(printf %q "$LAST_PWD")
     if [ $(id -u) -eq 0 ]; then
         PS1=$WINDOW_TITLE$(printf "\n%*s\r%s\n\! # " "$(($(tput cols)+${compensate}))" "$(prompt_right)" "$(prompt_left)")
     else
