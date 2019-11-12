@@ -1,6 +1,11 @@
 #!/bin/bash
-for remote in `git branch -r|awk '{print $1}'`;do
-    info=`git show --pretty=format:"%ci %ae %ci " $remote|head -n 1`;
-    branch="${remote/origin\//}"
-    echo $info$branch
-done|sort -r|awk '{ print $8 "|" $4 "|" $5 " " $6 }'|column -s '|' -t -x
+
+while read -a ARRAY; do
+	awk -v x="${ARRAY[0]#*/}" '
+		{
+			if(NR==1&&NR!~/^->$/){
+				printf("%s %s %s %s\n", x, $1, $2, $3)
+			}
+		}
+	' <<< "$(git show --format='%ae %ci' "${ARRAY[0]}")"
+done <<< "$(git branch -r --no-color)" | sort -r | column -t -x
