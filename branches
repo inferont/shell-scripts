@@ -1,11 +1,7 @@
 #!/bin/bash
 
-while read -a ARRAY; do
-	awk -v x="${ARRAY[0]#*/}" '
-		{
-			if(NR==1&&NR!~/^->$/){
-				printf("%s %s %s %s\n", x, $1, $2, $3)
-			}
-		}
-	' <<< "$(git show --format='%ae %ci' "${ARRAY[0]}")"
-done <<< "$(git branch -r --no-color)" | sort -r | column -t -x
+GitCMD='git --no-pager'
+while read Branch _; do
+	read EMail Date Time _ <<< "$($GitCMD log --format='%ae %ci' $Branch)"
+	printf "%s %s %s %s\n" "${Branch##*/}" "$EMail" "$Date" "$Time"
+done <<< "$($GitCMD branch -r --no-color)" | LC_ALL='C' sort -rk 3,4 | column -tx
