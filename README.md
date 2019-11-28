@@ -1,11 +1,17 @@
 # What's on Offer?
 
 * Same prompt on all servers connected to via SSH.
+
 * Current git branch displayed as part of the prompt.
+
 * Random colors for each server's hostname in prompt (Switched using `regenerate`).
+
 * Unix timestamp of each prompt aligned to the right.
+
 * Easily search history using up/down arrows as you type.
+
 * Automatically updated on all servers during session start.
+
 * Automatic monthly backups of shell history.
 
 # Installation Instructions
@@ -32,7 +38,7 @@ All done!
 
 # Restoring from Backup
 
-Assuming you created a backup, as mentioned in the above section, this can be done with a another simple one-liner, provided you've not messed with or deleted the backed-up file:
+Assuming you created a backup, as mentioned in the above section, this can be done with another simple one-liner, provided you've not messed with or deleted the backed-up file:
 
 ```bash
 mv ~/.bashrc.old ~/.bashrc
