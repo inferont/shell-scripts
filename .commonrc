@@ -130,7 +130,9 @@ alias .........="cd ../../../../../../../.."
 unset PROMPT_COMMAND
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
 function prompt_right() {
-   echo -e "\033[0;0m\\\D{%s}\033[0m"
+   EPOCHTIME=`date +%s`
+   HEXTIME=`echo "obase=16; ibase=10; $EPOCHTIME" | bc`
+   echo -e "\033[0;0m$HEXTIME\033[0m"
 }
 function prompt_left() {
    if [ $(id -u) -eq 0 ]; then
@@ -141,7 +143,7 @@ function prompt_left() {
 }
 
 function print_pre_prompt() {
-    compensate=5
+    compensate=9
     export WINDOW_TITLE="\033]0;${USER}@${HOSTNAME} ($(cat /proc/loadavg | cut -d' ' -f1-3))\a"
     CURRENT_PWD=$(pwd)
     CURRENT_PWD=$(printf %q "$CURRENT_PWD")
@@ -234,6 +236,12 @@ function unixdate() {
     fi
 }
 alias unixtime=unixdate
+## Use: "hextime {5DF26DDA - seconds since epoch in hex}"
+## Allows easy conversion of hexadecimal unix time to human readable date/time
+function hextime() {
+    DECTIME=`echo "obase=10; ibase=16; $@" | bc`
+    unixtime $DECTIME
+}
 ## Use: "- {history item}"
 ## Shows a human readable date/time for any history item
 function -() {
