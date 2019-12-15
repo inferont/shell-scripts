@@ -1,17 +1,46 @@
-# shell-scripts
-Install using:
-
-`wget https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc -O ~/.bashrc;`
-
 # Features
-* Same prompt on all servers connected to via SSH
-* Current git branch displayed as part of prompt
-* Randomly chosen colors for each servers hostname in prompt (Switched using `regenerate`)
-* Unix timestamp of each prompt aligned to the right
-* Easily search history using up/down arrows as you type
-* Automatically updated on all servers during session start
-* Backups of shell history created automatically every month
+
+* Same prompt on all servers connected to via SSH.
+
+* Current git branch displayed as part of the prompt.
+
+* Random colors for each server's hostname in prompt (Switched using `regenerate`).
+
+* A hexidecimal unix timestamp of each prompt aligned to the right. (Converted to human readable time using `hextime`)
+
+* Easily search history using up/down arrows as you type.
+
+* Automatically updated on all servers during session start.
+
+* Automatic monthly backups of shell history.
+
+# Installation Instructions
+
+Just **back up** your old ~/.bashrc and **download** the new file from this repository:
+
+```bash
+cp ~/.bashrc{,.old}; wget -O ~/.bashrc https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc
+```
+
+If you don't have _Wget_, try _Curl_:
+
+```bash
+cp ~/.bashrc{,.old}; curl -o ~/.bashrc https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc
+```
+
+All done!
+
+# Restoring from Backup
+
+Assuming you created a backup, as mentioned in the above section, this can be done with another simple one-liner, provided you've not messed with or deleted the backed-up file:
+
+```bash
+mv ~/.bashrc.old ~/.bashrc
+```
+
+That should do it.
 
 # Development/Customization
-* To customize this prompt for your own needs please fork this project and update the .bashrc and .commonrc URLs
-* A generic configuration section for multiple users may be introduced in the future
+
+* Customize this prompt for your own needs by forking this project and updating the `.bashrc` and `.commonrc` URLs.
+* A generic configuration section for multiple users may be introduced in the future.
