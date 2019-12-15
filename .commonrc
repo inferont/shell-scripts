@@ -41,7 +41,10 @@ export PATH=~/bin:$PATH
 LAST_PWD=$(pwd)
 LAST_PWD=$(printf %q "$LAST_PWD")
 LAST_PWD_TIMES=0
-touch ~/logs/long_pwd_log
+if [ -f ~/logs/long_pwd_log ]; then
+    mv ~/logs/long_pwd_log ~/logs/long_pwd.log
+fi
+touch ~/logs/long_pwd.log
 
 ## Welcome Message
 # Basic info
@@ -148,7 +151,7 @@ function print_pre_prompt() {
     CURRENT_PWD=$(pwd)
     CURRENT_PWD=$(printf %q "$CURRENT_PWD")
     
-    ## Keep track of last working directory. Write path to long_pwd_log if in directory for longer than 15 commands
+    ## Keep track of last working directory. Write path to long_pwd.log if in directory for longer than 15 commands
     if [[ "$CURRENT_PWD" == "$LAST_PWD" ]]; then
       LAST_PWD_TIMES=$((LAST_PWD_TIMES+1))
     else
@@ -157,8 +160,8 @@ function print_pre_prompt() {
     if [ $LAST_PWD_TIMES -gt 15 ]; then
       LAST_PWD_TIMES=0
       TO_WRITE="${LAST_PWD/~/~}"
-      if ! grep -q $TO_WRITE ~/logs/long_pwd_log; then
-        echo $TO_WRITE >> ~/logs/long_pwd_log
+      if ! grep -q $TO_WRITE ~/logs/long_pwd.log; then
+        echo $TO_WRITE >> ~/logs/long_pwd.log
       fi
     fi
     LAST_PWD=$(pwd)
@@ -211,14 +214,14 @@ alias bcc=gitbcc
 
 
 ## Use: "c" or "cd"
-## Lists common PWDs that have been used in long_pwd_log with an option to choose one
+## Lists common PWDs that have been used in long_pwd.log with an option to choose one
 function c() {
    if [ -z $1 ]; then
-       cat ~/logs/long_pwd_log | sort -u | nl
+       cat ~/logs/long_pwd.log | sort -u | nl
        echo "---------------------------------------------------------------------"
        echo "Make selection:"
        read selection
-       eval cd $(cat ~/logs/long_pwd_log | sort -u | tail -n +$selection | head -n 1)
+       eval cd $(cat ~/logs/long_pwd.log | sort -u | tail -n +$selection | head -n 1)
    else
        cd "$@"
    fi
