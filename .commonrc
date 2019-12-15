@@ -243,7 +243,8 @@ alias unixtime=unixdate
 ## Allows easy conversion of hexadecimal unix time to human readable date/time
 function hextime() {
     DECTIME=`echo "obase=10; ibase=16; $@" | bc`
-    unixtime $DECTIME
+    CONVERTED=`unixtime $DECTIME`
+    echo $DECTIME $CONVERTED
 }
 ## Use: "- {history item}"
 ## Shows a human readable date/time for any history item
