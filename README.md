@@ -8,6 +8,8 @@
 
 * Random colors for each server's hostname in prompt (Switched using `regenerate`).
 
+* Unique colors for each file type with `ls` output
+
 * A hexidecimal unix timestamp of each prompt aligned to the right. (Converted to human readable time using `hextime`)
 
 * Easily search history using up/down arrows as you type.
