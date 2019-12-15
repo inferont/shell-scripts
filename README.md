@@ -1,6 +1,8 @@
 # Features
 
-* Same prompt on all servers connected to via SSH.
+* Same prompt, functions, and tweaks on all servers connected to via SSH.
+
+* Automatic search and excution of commands with the new `_ ` command. (I.e. `_ ssh` for a list of all the servers you have previously conected) 
 
 * Current git branch displayed as part of the prompt.
 
