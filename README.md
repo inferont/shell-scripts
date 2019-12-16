@@ -6,6 +6,8 @@
 
 * Current git branch displayed as part of the prompt.
 
+* System load displayed as a part of shell title
+
 * Random colors for each server's hostname in prompt (Switched using `regenerate`).
 
 * Unique colors for each file type with `ls` output
