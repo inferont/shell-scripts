@@ -18,6 +18,10 @@
 
 * Automatic monthly backups of shell history.
 
+# Demo
+
+[![asciicast](https://asciinema.org/a/iYHysYOySTe8mZSSSevXlgY4l.svg)](https://asciinema.org/a/iYHysYOySTe8mZSSSevXlgY4l)
+
 # Installation Instructions
 
 Just **back up** your old ~/.bashrc and **download** the new file from this repository:
