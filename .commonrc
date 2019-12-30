@@ -242,7 +242,7 @@ alias unixtime=unixdate
 ## Use: "hextime {5DF26DDA - seconds since epoch in hex}"
 ## Allows easy conversion of hexadecimal unix time to human readable date/time
 function hextime() {
-    DECTIME=`echo "obase=10; ibase=16; $@" | bc`
+    DECTIME=`printf "%d" 0x$@`
     CONVERTED=`unixtime $DECTIME`
     echo $DECTIME $CONVERTED
 }
