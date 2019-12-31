@@ -175,7 +175,7 @@ function print_pre_prompt() {
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; print_pre_prompt"
 
 ## Use "compress {folder name}"
-## Creates a bz2 file with the contents of the folder
+## Creates a gz file with the contents of the folder
 function compress() {
     tar -cvzf $1.tar.gz $1
 }
