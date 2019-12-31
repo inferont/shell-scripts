@@ -175,9 +175,13 @@ function print_pre_prompt() {
 PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; print_pre_prompt"
 
 ## Use "compress {folder name}"
-## Creates a gz file with the contents of the folder
+## Creates a gz/bz2 file with the contents of the folder
 function compress() {
-    tar -cvzf $1.tar.gz $1
+    if hash bzip2 2>/dev/null; then
+        tar -cvjf $1.tar.bz2 $1
+    else
+        tar -cvzf $1.tar.gz $1
+    fi
 }
 
 ## Use "gitc {Git branch name}"
