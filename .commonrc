@@ -135,8 +135,8 @@ PROMPT_COMMAND="${PROMPT_COMMAND:-:} ; history -a"
 function prompt_right() {
    EPOCHTIME=`date +%s`
    HEXTIME=`printf "%X" $EPOCHTIME`
-   SPH=`echo "${HEXTIME:0:4}" "${HEXTIME:4:8}"`
-   echo -e "\033[0;0m$SPH\033[0m"
+   #SPH=`echo "${HEXTIME:0:4}" "${HEXTIME:4:8}"`
+   echo -e "\033[0;0m$HEXTIME\033[0m"
 }
 function prompt_left() {
    if [ $(id -u) -eq 0 ]; then
