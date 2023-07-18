@@ -1,3 +1,5 @@
+Multi-server, multi-container shell prompt customizations
+
 # Features
 
 * Same prompt, functions, and tweaks on all servers connected to via SSH.
