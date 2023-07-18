@@ -1,6 +1,6 @@
-Multi-server, multi-container shell prompt customizations
+# Multi-server, multi-container shell prompt customizations
 
-# Features
+## Features
 
 * Same prompt, functions, and tweaks on all servers connected to via SSH.
 
@@ -22,11 +22,7 @@ Multi-server, multi-container shell prompt customizations
 
 * Automatic monthly backups of shell history.
 
-# Demo
-
-[![asciicast](https://asciinema.org/a/iYHysYOySTe8mZSSSevXlgY4l.svg)](https://asciinema.org/a/iYHysYOySTe8mZSSSevXlgY4l)
-
-# Installation Instructions
+## Installation Instructions
 
 Just **back up** your old ~/.bashrc and **download** the new file from this repository:
 
@@ -40,18 +36,13 @@ If you don't have _Wget_, try _Curl_:
 cp ~/.bashrc{,.old}; curl -o ~/.bashrc https://raw.githubusercontent.com/inferont/shell-scripts/master/.bashrc
 ```
 
-All done!
-
-# Restoring from Backup
+## Restoring from Backup
 
 Assuming you created a backup, as mentioned in the above section, this can be done with another simple one-liner, provided you've not messed with or deleted the backed-up file:
 
 ```bash
 mv ~/.bashrc.old ~/.bashrc
 ```
-
-That should do it.
-
 # Development/Customization
 
 * Customize this prompt for your own needs by forking this project and updating the `.bashrc` and `.commonrc` URLs.
